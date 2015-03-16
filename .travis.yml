@@ -1,0 +1,5 @@
+language: r
+
+# Be strict when checking our package
+warnings_are_errors: false
+

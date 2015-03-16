@@ -1,0 +1,285 @@
+Start testing: Aug 25 17:09 EDT
+----------------------------------------------------------
+1/9 Testing: mass_fillholes_test
+1/9 Test: mass_fillholes_test
+Command: "/sbiasfw/lab/basis/2.1.2/centos5/lib/testdriver" "--intensity-tolerance" "0.01" "--compare" "/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_fillholes_test/TestCase1_444_byte_brainmask_holes_filled.nii.gz" "/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask_holes_filled.nii.gz" "--" "/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/lib/mass-fillHoles" "-in" "/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask_holes.nii.gz" "-dest" "/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_fillholes_test/" "-v"
+Directory: /sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_fillholes_test
+"mass_fillholes_test" start time: Aug 25 17:09 EDT
+Output:
+----------------------------------------------------------
+<DartMeasurement name="Host Name" type="string">sbia-tesla1.uphs.upenn.edu</DartMeasurement>
+<DartMeasurement name="Working Directory" type="string">/gpfs/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_fillholes_test</DartMeasurement>
+<DartMeasurement name="ITK Version" type="string">3.20.1</DartMeasurement>
+
+Running commands on : sbia-tesla1.uphs.upenn.edu
+Start time : 2014-08-25-17:09:19
+
+
+
+----->	Temporary local directory created at /tmp/mass-fillHoles_674.jxkBDBv778/ ...
+
+Input Image			: /gpfs/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask_holes.nii.gz
+Output Image			: /gpfs/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_fillholes_test/TestCase1_444_byte_brainmask_holes_filled.nii.gz
+
+-----> Importing required files to the temporary local directory ...
+
+`/gpfs/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask_holes.nii.gz' -> `/tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes.nii.gz'
+
+-----> Converting the Input image to a binary mask (if it is not already) and inverting the mask ...
+
+
+--> 3dcalc 
+ -prefix /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv.nii.gz 
+ -a /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes.nii.gz 
+ -expr 'iszero(step(a))' 
+ -verbose 
+ -nscale 
+ -byte;
+++ 3dcalc: AFNI version=AFNI_2008_07_18_1710 (Nov 20 2009) [64-bit]
+++ Authored by: A cast of thousands
+++ Computing sub-brick 0
+++ Scaling output to type byte brick(s)
+++ Sub-brick 0: no scale factor
+++ Computing output statistics
+++ Output dataset /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv.nii.gz
+
+++ VERSION CHECK!  This program = AFNI_2008_07_18_1710
+++         Current AFNI website = AFNI_2011_12_21_1014
+
+-----> Clustering the inverted mask ...
+
+
+--> 3dclust 
+ -prefix /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv_bg.nii.gz 
+ 0 80474 
+ /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv.nii.gz;
+++ 3dclust: AFNI version=AFNI_2008_07_18_1710 (Nov 20 2009) [64-bit]
+++ Authored by: RW Cox et al
+++ Wrote dataset /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv_bg.nii.gz
+#
+#Cluster report for file /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv.nii.gz 
+#[Connectivity radius = 1.00 mm  Volume threshold = 5150336.00 ]
+#[Single voxel volume = 64.0 (microliters) ]
+#[Voxel datum type    = byte ]
+#[Voxel dimensions    = 4.000 mm X 4.000 mm X 4.000 mm ]
+#[Coordinates Order   = RAI ]
+#[Fake voxel dimen    = 1.000 mm X 1.000 mm X 1.000 mm ]
+#Mean and SEM based on Absolute Value of voxel intensities: 
+#
+#Volume  CM RL  CM AP  CM IS  minRL  maxRL  minAP  maxAP  minIS  maxIS    Mean     SEM    Max Int  MI RL  MI AP  MI IS
+#------  -----  -----  -----  -----  -----  -----  -----  -----  -----  -------  -------  -------  -----  -----  -----
+ 160923  -99.2  -119.3  116.5  -197.5   -1.5  -237.1   -1.1    0.6  240.6        1        0        1  -197.5  -237.1    0.6 
+
+-----> Creating the final mask ...
+
+
+--> 3dcalc 
+ -prefix /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_filled.nii.gz 
+ -a /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes.nii.gz 
+ -b /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv.nii.gz 
+ -c /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv_bg.nii.gz 
+ -expr 'a+(b-c)' 
+ -verbose 
+ -nscale;
+++ 3dcalc: AFNI version=AFNI_2008_07_18_1710 (Nov 20 2009) [64-bit]
+++ Authored by: A cast of thousands
+++ Computing sub-brick 0
+++ Scaling output to type byte brick(s)
+++ Sub-brick 0: no scale factor
+++ Computing output statistics
+++ Output dataset /tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_filled.nii.gz
+
+-----> Transferring the results to the destination ...
+
+`/tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_filled.nii.gz' -> `/gpfs/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_fillholes_test/TestCase1_444_byte_brainmask_holes_filled.nii.gz'
+removed `/tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_filled.nii.gz'
+
+-----> Removing some of the remaining files ...
+
+removed `/tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes.nii.gz'
+removed `/tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv.nii.gz'
+removed `/tmp/mass-fillHoles_674.jxkBDBv778/TestCase1_444_byte_brainmask_holes_inv_bg.nii.gz'
+rmdir: removing directory, /tmp/mass-fillHoles_674.jxkBDBv778/
+
+
+Execution time:  1s
+
+<DartMeasurement name="BaselineImageName" type="text/string">TestCase1_444_byte_brainmask_holes_filled.nii.gz</DartMeasurement>
+<end of output>
+Test time =   0.90 sec
+----------------------------------------------------------
+Test Passed.
+"mass_fillholes_test" end time: Aug 25 17:09 EDT
+"mass_fillholes_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/9 Testing: mass_morpho-dilate_test
+2/9 Test: mass_morpho-dilate_test
+Command: "/sbiasfw/lab/basis/2.1.2/centos5/lib/testdriver" "--intensity-tolerance" "0.01" "--compare" "/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-dilate_test/TestCase1_444_byte_brainmask_dil2mm.nii.gz" "/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask_dil2mm.nii.gz" "--" "/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/lib/mass-morpho" "-in" "/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask.nii.gz" "-dilate" "-dest" "/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-dilate_test/" "-kernel" "2" "-v"
+Directory: /sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-dilate_test
+"mass_morpho-dilate_test" start time: Aug 25 17:09 EDT
+Output:
+----------------------------------------------------------
+<DartMeasurement name="Host Name" type="string">sbia-tesla1.uphs.upenn.edu</DartMeasurement>
+<DartMeasurement name="Working Directory" type="string">/gpfs/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-dilate_test</DartMeasurement>
+<DartMeasurement name="ITK Version" type="string">3.20.1</DartMeasurement>
+
+Running commands on : sbia-tesla1.uphs.upenn.edu
+Start time : 2014-08-25-17:09:20
+
+
+
+----->	Temporary local directory created at /tmp/mass-morpho_1338.xbrWQu1421/ ...
+
+
+-----> Importing required files to the temporary local directory ...
+
+`/gpfs/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask.nii.gz' -> `/tmp/mass-morpho_1338.xbrWQu1421/TestCase1_444_byte_brainmask.nii.gz'
+
+-----> Converting the Input image to a binary mask (if it is not already) ...
+
+
+--> 3dcalc 
+ -prefix /tmp/mass-morpho_1338.xbrWQu1421/TestCase1_444_byte_brainmask_mask.nii.gz 
+ -a /tmp/mass-morpho_1338.xbrWQu1421/TestCase1_444_byte_brainmask.nii.gz 
+ -expr 'step(a)' 
+ -verbose 
+ -nscale 
+ -byte;
+++ 3dcalc: AFNI version=AFNI_2008_07_18_1710 (Nov 20 2009) [64-bit]
+++ Authored by: A cast of thousands
+++ Computing sub-brick 0
+++ Scaling output to type byte brick(s)
+++ Sub-brick 0: no scale factor
+++ Computing output statistics
+++ Output dataset /tmp/mass-morpho_1338.xbrWQu1421/TestCase1_444_byte_brainmask_mask.nii.gz
+
+-----> Dilating the mask ...
+
+3dLocalstat 
+ -nbhd 'SPHERE(2)' 
+ -stat 'sum' 
+ -prefix dilate.nii.gz 
+ /tmp/mass-morpho_1338.xbrWQu1421/TestCase1_444_byte_brainmask_mask.nii.gz;
+++ 3dLocalstat: AFNI version=AFNI_2008_07_18_1710 (Nov 20 2009) [64-bit]
+++ Authored by: Emperor Zhark
+*+ WARNING: Illegal input to MCW_build_mask: dx=4 dy=4 dz=4 max_dist=2
+++ Neighborhood comprises 1 voxels
+++ voxel loop [0]:0123456789.0123456789.0123456789.0123456789.0123456789.
+++ Output dataset ./dilate.nii.gz
+
+3dcalc 
+ -a dilate.nii.gz 
+ -expr 'step(a)' 
+ -prefix /gpfs/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-dilate_test/TestCase1_444_byte_brainmask_dil2mm.nii.gz 
+ -verbose;
+++ 3dcalc: AFNI version=AFNI_2008_07_18_1710 (Nov 20 2009) [64-bit]
+++ Authored by: A cast of thousands
+++ Computing sub-brick 0
+++ Computing output statistics
+++ Output dataset /gpfs/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-dilate_test/TestCase1_444_byte_brainmask_dil2mm.nii.gz
+removed `dilate.nii.gz'
+
+-----> Removing some of the remaining files ...
+
+removed `/tmp/mass-morpho_1338.xbrWQu1421/TestCase1_444_byte_brainmask_mask.nii.gz'
+removed `/tmp/mass-morpho_1338.xbrWQu1421/TestCase1_444_byte_brainmask.nii.gz'
+rmdir: removing directory, /tmp/mass-morpho_1338.xbrWQu1421/
+
+
+Execution time:  0s
+
+<DartMeasurement name="BaselineImageName" type="text/string">TestCase1_444_byte_brainmask_dil2mm.nii.gz</DartMeasurement>
+<end of output>
+Test time =   0.27 sec
+----------------------------------------------------------
+Test Passed.
+"mass_morpho-dilate_test" end time: Aug 25 17:09 EDT
+"mass_morpho-dilate_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/9 Testing: mass_morpho-erode_test
+3/9 Test: mass_morpho-erode_test
+Command: "/sbiasfw/lab/basis/2.1.2/centos5/lib/testdriver" "--intensity-tolerance" "0.01" "--compare" "/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-erode_test/TestCase1_444_byte_brainmask_ero2mm.nii.gz" "/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask_ero2mm.nii.gz" "--" "/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/lib/mass-morpho" "-in" "/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask.nii.gz" "-erode" "-dest" "/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-erode_test/" "-kernel" "2" "-v"
+Directory: /sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-erode_test
+"mass_morpho-erode_test" start time: Aug 25 17:09 EDT
+Output:
+----------------------------------------------------------
+<DartMeasurement name="Host Name" type="string">sbia-tesla1.uphs.upenn.edu</DartMeasurement>
+<DartMeasurement name="Working Directory" type="string">/gpfs/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-erode_test</DartMeasurement>
+<DartMeasurement name="ITK Version" type="string">3.20.1</DartMeasurement>
+
+Running commands on : sbia-tesla1.uphs.upenn.edu
+Start time : 2014-08-25-17:09:20
+
+
+
+----->	Temporary local directory created at /tmp/mass-morpho_1644.zcXWPb1724/ ...
+
+
+-----> Importing required files to the temporary local directory ...
+
+`/gpfs/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte_brainmask.nii.gz' -> `/tmp/mass-morpho_1644.zcXWPb1724/TestCase1_444_byte_brainmask.nii.gz'
+
+-----> Converting the Input image to a binary mask (if it is not already) ...
+
+
+--> 3dcalc 
+ -prefix /tmp/mass-morpho_1644.zcXWPb1724/TestCase1_444_byte_brainmask_mask.nii.gz 
+ -a /tmp/mass-morpho_1644.zcXWPb1724/TestCase1_444_byte_brainmask.nii.gz 
+ -expr 'step(a)' 
+ -verbose 
+ -nscale 
+ -byte;
+++ 3dcalc: AFNI version=AFNI_2008_07_18_1710 (Nov 20 2009) [64-bit]
+++ Authored by: A cast of thousands
+++ Computing sub-brick 0
+++ Scaling output to type byte brick(s)
+++ Sub-brick 0: no scale factor
+++ Computing output statistics
+++ Output dataset /tmp/mass-morpho_1644.zcXWPb1724/TestCase1_444_byte_brainmask_mask.nii.gz
+
+-----> Eroding the thresholded mask ...
+
+3dLocalstat 
+ -nbhd 'SPHERE(2)' 
+ -stat 'sum' 
+ -prefix erode.nii.gz 
+ /tmp/mass-morpho_1644.zcXWPb1724/TestCase1_444_byte_brainmask_mask.nii.gz;
+++ 3dLocalstat: AFNI version=AFNI_2008_07_18_1710 (Nov 20 2009) [64-bit]
+++ Authored by: Emperor Zhark
+*+ WARNING: Illegal input to MCW_build_mask: dx=4 dy=4 dz=4 max_dist=2
+++ Neighborhood comprises 1 voxels
+++ voxel loop [0]:0123456789.0123456789.0123456789.0123456789.0123456789.
+++ Output dataset ./erode.nii.gz
+
+3dcalc 
+ -a erode.nii.gz 
+ -expr 'step(a-0)' 
+ -prefix /gpfs/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-erode_test/TestCase1_444_byte_brainmask_ero2mm.nii.gz 
+ -verbose;
+++ 3dcalc: AFNI version=AFNI_2008_07_18_1710 (Nov 20 2009) [64-bit]
+++ Authored by: A cast of thousands
+++ Computing sub-brick 0
+++ Computing output statistics
+++ Output dataset /gpfs/sbia/home/bergman/MASS/MASS_1.1.0/build-centos5/Testing/Temporary/mass_morpho-erode_test/TestCase1_444_byte_brainmask_ero2mm.nii.gz
+removed `erode.nii.gz'
+
+-----> Removing some of the remaining files ...
+
+removed `/tmp/mass-morpho_1644.zcXWPb1724/TestCase1_444_byte_brainmask_mask.nii.gz'
+removed `/tmp/mass-morpho_1644.zcXWPb1724/TestCase1_444_byte_brainmask.nii.gz'
+rmdir: removing directory, /tmp/mass-morpho_1644.zcXWPb1724/
+
+
+Execution time:  0s
+
+<DartMeasurement name="BaselineImageName" type="text/string">TestCase1_444_byte_brainmask_ero2mm.nii.gz</DartMeasurement>
+<end of output>
+Test time =   0.19 sec
+----------------------------------------------------------
+Test Passed.
+"mass_morpho-erode_test" end time: Aug 25 17:09 EDT
+"mass_morpho-erode_test" time elapsed: 00:00:00
+----------------------------------------------------------
+

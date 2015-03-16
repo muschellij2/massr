@@ -1,0 +1,13 @@
+Package: massr
+Type: Package
+Title: Installs MASS 
+Version: 1.0
+Date: 2015-03-07
+Author: John Muschelli
+Maintainer: John Muschelli <muschellij2@gmail.com>
+Description: It performs skull stripping with label fusion
+License: BSD
+Imports:
+	fslr,
+	oro.nifti
+SystemRequirements: cmake (http://www.cmake.org)

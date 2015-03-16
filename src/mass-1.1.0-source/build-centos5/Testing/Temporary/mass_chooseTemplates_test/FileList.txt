@@ -1,0 +1,8 @@
+/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase1_444_byte.nii.gz
+/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase2_444_byte.nii.gz
+/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase3_444_byte.nii.gz
+/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase4_444_byte.nii.gz
+/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase5_444_byte.nii.gz
+/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase6_444_byte.nii.gz
+/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase7_444_byte.nii.gz
+/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase8_444_byte.nii.gz

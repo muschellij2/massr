@@ -1,0 +1,82 @@
+# Install script for directory: /sbia/home/bergman/MASS/MASS_1.1.0/data
+
+# Set the install prefix
+IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
+  SET(CMAKE_INSTALL_PREFIX "/sbia/sbiasfw/lab/mass/1.1.0")
+ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
+STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
+
+# Set the install configuration name.
+IF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
+  IF(BUILD_TYPE)
+    STRING(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
+           CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
+  ELSE(BUILD_TYPE)
+    SET(CMAKE_INSTALL_CONFIG_NAME "Release")
+  ENDIF(BUILD_TYPE)
+  MESSAGE(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
+ENDIF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
+
+# Set the component getting installed.
+IF(NOT CMAKE_INSTALL_COMPONENT)
+  IF(COMPONENT)
+    MESSAGE(STATUS "Install component: \"${COMPONENT}\"")
+    SET(CMAKE_INSTALL_COMPONENT "${COMPONENT}")
+  ELSE(COMPONENT)
+    SET(CMAKE_INSTALL_COMPONENT)
+  ENDIF(COMPONENT)
+ENDIF(NOT CMAKE_INSTALL_COMPONENT)
+
+# Install shared libraries without execute permission?
+IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  SET(CMAKE_INSTALL_SO_NO_EXE "0")
+ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+
+IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  # -----------------------------------------------------------------------
+  # basis_install_directory(): /sbia/home/bergman/MASS/MASS_1.1.0/data
+  set (BASIS_INSTALL_DIRECTORY_FILES)
+  set (BASIS_INSTALL_DIRECTORY_SOURCE      "/sbia/home/bergman/MASS/MASS_1.1.0/data")
+  set (BASIS_INSTALL_DIRECTORY_DESTINATION "$ENV{DESTDIR}/sbia/sbiasfw/lab/mass/1.1.0/share/data")
+  set (BASIS_INSTALL_DIRECTORY_MATCH       "")
+  set (BASIS_INSTALL_DIRECTORY_EXCLUDE     "CMakeLists.txt$|/.svn/|/.git/|.DS_Store$|.*~$")
+  file (GLOB_RECURSE BASIS_INSTALL_DIRECTORY_ALL_FILES "${BASIS_INSTALL_DIRECTORY_SOURCE}/*")
+  foreach (BASIS_INSTALL_DIRECTORY_FILE IN LISTS BASIS_INSTALL_DIRECTORY_ALL_FILES)
+    if (NOT BASIS_INSTALL_DIRECTORY_MATCH                                            OR
+            BASIS_INSTALL_DIRECTORY_FILE MATCHES "${BASIS_INSTALL_DIRECTORY_MATCH}" AND
+        NOT BASIS_INSTALL_DIRECTORY_FILE MATCHES "${BASIS_INSTALL_DIRECTORY_EXCLUDE}")
+      list (APPEND BASIS_INSTALL_DIRECTORY_FILES "${BASIS_INSTALL_DIRECTORY_FILE}")
+   endif ()
+  endforeach ()
+  foreach (BASIS_INSTALL_DIRECTORY_FILE IN LISTS BASIS_INSTALL_DIRECTORY_FILES)
+    file (RELATIVE_PATH BASIS_INSTALL_DIRECTORY_FILE "${BASIS_INSTALL_DIRECTORY_SOURCE}" "${BASIS_INSTALL_DIRECTORY_FILE}")
+    execute_process (
+      COMMAND "/gpfs/sbia/sbiasfw/external/cmake/centos5/2.8.10.2/bin/cmake" -E compare_files
+                  "${BASIS_INSTALL_DIRECTORY_SOURCE}/${BASIS_INSTALL_DIRECTORY_FILE}"
+                  "${BASIS_INSTALL_DIRECTORY_DESTINATION}/${BASIS_INSTALL_DIRECTORY_FILE}"
+      RESULT_VARIABLE RC
+      OUTPUT_QUIET
+      ERROR_QUIET
+    )
+    if (RC EQUAL 0)
+      message (STATUS "Up-to-date: ${BASIS_INSTALL_DIRECTORY_DESTINATION}/${BASIS_INSTALL_DIRECTORY_FILE}")
+    else ()
+      message (STATUS "Installing: ${BASIS_INSTALL_DIRECTORY_DESTINATION}/${BASIS_INSTALL_DIRECTORY_FILE}")
+      execute_process (
+        COMMAND "/gpfs/sbia/sbiasfw/external/cmake/centos5/2.8.10.2/bin/cmake" -E copy_if_different
+            "${BASIS_INSTALL_DIRECTORY_SOURCE}/${BASIS_INSTALL_DIRECTORY_FILE}"
+            "${BASIS_INSTALL_DIRECTORY_DESTINATION}/${BASIS_INSTALL_DIRECTORY_FILE}"
+        RESULT_VARIABLE RC
+        OUTPUT_QUIET
+        ERROR_QUIET
+      )
+      if (RC EQUAL 0)
+        list (APPEND CMAKE_INSTALL_MANIFEST_FILES "${BASIS_INSTALL_DIRECTORY_DESTINATION}/${BASIS_INSTALL_DIRECTORY_FILE}")
+      else ()
+        message (STATUS "Failed to install ${BASIS_INSTALL_DIRECTORY_DESTINATION}/${BASIS_INSTALL_DIRECTORY_FILE}")
+      endif ()
+    endif ()
+  endforeach ()
+  # -----------------------------------------------------------------------
+ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+

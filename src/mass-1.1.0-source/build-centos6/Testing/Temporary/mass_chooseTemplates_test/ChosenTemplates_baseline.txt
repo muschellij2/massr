@@ -1,0 +1,1 @@
+/sbia/home/bergman/MASS/MASS_1.1.0/test/baseline/TestCase6_444_byte.nii.gz

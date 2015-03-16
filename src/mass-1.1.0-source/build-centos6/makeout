@@ -1,0 +1,53 @@
+Scanning dependencies of target headers_check
+[  9%] Checking if public header files were added or removed
+[  9%] Built target headers_check
+Scanning dependencies of target _mass
+[ 18%] Building BASH executable bin/mass...
+[ 18%] Built target _mass
+Scanning dependencies of target mass
+[ 18%] Built target mass
+Scanning dependencies of target _mass-chooseTemplates
+[ 27%] Building BASH executable bin/mass-chooseTemplates...
+[ 27%] Built target _mass-chooseTemplates
+Scanning dependencies of target mass-chooseTemplates
+[ 27%] Built target mass-chooseTemplates
+Scanning dependencies of target _mass-choosetemplate
+[ 36%] Building PYTHON executable lib/mass-choosetemplate...
+[ 36%] Built target _mass-choosetemplate
+Scanning dependencies of target mass-choosetemplate
+[ 36%] Built target mass-choosetemplate
+Scanning dependencies of target _mass-fillHoles
+[ 45%] Building BASH executable lib/mass-fillHoles...
+[ 45%] Built target _mass-fillHoles
+Scanning dependencies of target mass-fillHoles
+[ 45%] Built target mass-fillHoles
+Scanning dependencies of target _mass-morpho
+[ 54%] Building BASH executable lib/mass-morpho...
+[ 54%] Built target _mass-morpho
+Scanning dependencies of target mass-morpho
+[ 54%] Built target mass-morpho
+Scanning dependencies of target _mass-registrations
+[ 63%] Building BASH executable lib/mass-registrations...
+[ 63%] Built target _mass-registrations
+Scanning dependencies of target mass-registrations
+[ 63%] Built target mass-registrations
+Scanning dependencies of target _mass-skullstripping
+[ 72%] Building BASH executable lib/mass-skullstripping...
+[ 72%] Built target _mass-skullstripping
+Scanning dependencies of target mass-skullstripping
+[ 72%] Built target mass-skullstripping
+Scanning dependencies of target _mass-thresholdJacobian
+[ 81%] Building BASH executable bin/mass-thresholdJacobian...
+[ 81%] Built target _mass-thresholdJacobian
+Scanning dependencies of target mass-thresholdJacobian
+[ 81%] Built target mass-thresholdJacobian
+Scanning dependencies of target _massUtilities
+[ 90%] Building BASH module lib/bash/mass/mass-functions.sh...
+[ 90%] Built target _massUtilities
+Scanning dependencies of target massUtilities
+[ 90%] Built target massUtilities
+Scanning dependencies of target _schedulerSetting
+[100%] Building BASH module lib/bash/mass/SettingsSGE.sh...
+[100%] Built target _schedulerSetting
+Scanning dependencies of target schedulerSetting
+[100%] Built target schedulerSetting
