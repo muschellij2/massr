@@ -14,7 +14,8 @@ all:
 	cd ./basis-2.1.4-build; \
 	cmake ../basis-2.1.4-source; \
 	make; 
-	pathdir=`Rscript -e "cat(.libPaths()[1])"`
+	pathdir=`Rscript -e "cat(.libPaths()[1])"`;
+	echo $pathdir;
 	# unzip ${package}-${version}-source.zip;
 	# cd /Users/johnmuschelli/Dropbox/Packages/massr/src/
 	############# - IMPORTANT- if you change output of basis, need
@@ -33,6 +34,7 @@ all:
 	#
 	# -DCMAKE_INSTALL_PREFIX=../../inst/mass \
 	#
+	mkdir -p ${pathdir}/massr/mass;
 	prefix=$PWD/${package}-${version}-build;
 	echo $prefix;
 	mkdir -p ./"${package}-${version}-build";
