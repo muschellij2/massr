@@ -36,7 +36,8 @@ fix_mass <- function(){
     if (grepl("inux", sysname)){
       x = gsub("opt=t", "opt=p", x, fixed=TRUE)      
     } else if ( grepl("darwin", sysname) ){
-      x = gsub("-${opt} ${LocalTempDir}", "", x, fixed=TRUE)
+      x = gsub("-${opt} ${LocalTempDir}", "", x, fixed=TRUE)      
+#       x = gsub("-${opt} ${LocalTempDir} ", "${LocalTempDir}/", x, fixed=TRUE)
     }
     writeLines(x, con = file)      
   }
