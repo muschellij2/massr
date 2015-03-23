@@ -3,7 +3,7 @@ files= file.path("lib/", c('mass-fillHoles', "mass-morpho",
 files = c(files, file.path("lib/", 
                            c('mass', "mass-chooseTemplates", 
                              "mass-thresholdJacobian", "uninstall-mass")))
-root_temp = dirname(tempdir)
+root_temp = tempdir()
 pkgdir = file.path(.libPaths(), "mass")
 changedir = function(file){
   x = readLines(file)
