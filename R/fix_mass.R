@@ -26,6 +26,19 @@ fix_mass <- function(){
       return(TRUE)
     }
   }
-  
+
+  if (grepl("inux", tolower(Sys.info()[['sysname']]))){
+    file = file.path(pkgdir, "lib/bash/mass/mass-functions.sh")
+    if (!file.exists(file)){
+      #       cat(paste0(file, " does not exist!\n"))
+    } else {
+      x = readLines(file)
+      xx = gsub("opt=t", "opt=p", x)
+      writeLines(xx, con = file)
+    }
+  }
+
   all(sapply(files, changedir))
+
+
 }

@@ -25,7 +25,7 @@ mass <- function(
                           package="massr"), 
   cerebellum =TRUE # use templates with cerebellum
   ){
-  x = fix_mass()
+  suppressWarnings({x = fix_mass()})
   file = checkimg(file)
   outdir = path.expand(outdir)
   if (!is.null(template_directory)){
