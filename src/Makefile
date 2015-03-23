@@ -38,7 +38,7 @@ all:
 	# prefix=$PWD/${package}-${version}-build;
 	# echo $prefix;
 	mkdir -p ./"${package}-${version}-build";
-	# -DCMAKE_INSTALL_PREFIX=$(pathdir)/massr/mass" \
+	# -DCMAKE_INSTALL_PREFIX=$(pathdir)/massr/mass" 
 	cd ./"${package}-${version}-build"; \
 	cmake -D SCHEDULER:STRING=??? \
 	-DCMAKE_INSTALL_PREFIX=../../inst/mass \
