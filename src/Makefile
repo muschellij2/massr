@@ -1,6 +1,7 @@
 SHELL=bash
 version=1.1.0
 package=mass
+pathdir=`Rscript -e "cat(.libPaths()[1])"`;
 all:
 	mkdir -p ./basis-build;
 	cp basis-2.1.4-source.tar.gz ./basis-build;
@@ -15,8 +16,6 @@ all:
 	cd ./basis-2.1.4-build; \
 	cmake ../basis-2.1.4-source; \
 	make; 
-	pathdir=`Rscript -e "cat(.libPaths()[1])"`;
-	echo "$pathdir";
 	# unzip ${package}-${version}-source.zip;
 	# cd /Users/johnmuschelli/Dropbox/Packages/massr/src/
 	############# - IMPORTANT- if you change output of basis, need
