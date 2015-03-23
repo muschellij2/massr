@@ -48,9 +48,12 @@ all:
 	rm -rf ./"${package}-${version}-build";
 	# rm -rf ./"${package}-${version}-source";
 	rm -rf ./basis-build;
+	cp ../${package}-${version}-source/Process_Files.R ./;
+	R CMD Batch Process_Files.R
 
 clean:
 	rm -rf ./"${package}-${version}-build"
 	# rm -rf ./"${package}-${version}-source"
 	rm -rf ../inst/${package}/*;
 	rm -rf ./basis-build;
+	rm -f Process_Files.R;

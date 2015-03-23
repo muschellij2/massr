@@ -36,7 +36,7 @@ mass <- function(
   args = c("-in"=file, 
            "-ref"=template_directory,
            "-dest"=outdir,
-           "--regs"=nregs,
+           "-regs"=nregs,
            ifelse(!cerebellum, "-noCere", ""))
   cmd = "mass"
   cmd = mass_cmd_maker(cmd=cmd, args = args)
