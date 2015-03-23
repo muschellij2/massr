@@ -49,7 +49,7 @@ all:
 	# rm -rf ./"${package}-${version}-source";
 	rm -rf ./basis-build;
 	# cp ./${package}-${version}-source/Process_Files.R ./;
-	# R CMD BATCH Process_Files.R
+	# "$(R_HOME)/bin$(R_ARCH_BIN)/Rscript" Process_Files.R
 	# cat Process_Files.Rout
 
 clean:

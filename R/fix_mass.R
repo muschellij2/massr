@@ -1,7 +1,6 @@
 #' @title Fix MASS Functions if installed incorrectly
 #'
 #' @description Resets correct paths for MASS fucntions
-#' @export
 #' @return Logical
 fix_mass <- function(){
   files= file.path("lib/", c('mass-fillHoles', "mass-morpho", 
