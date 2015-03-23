@@ -34,20 +34,20 @@ all:
 	# -DCMAKE_INSTALL_PREFIX=../../inst/mass \
 	#
 	prefix=$PWD/${package}-${version}-build;
-	echo $prefix
+	echo $prefix;
 	mkdir -p ./"${package}-${version}-build";
 	cd ./"${package}-${version}-build"; \
 	cmake -D SCHEDULER:STRING=??? \
-	-DCMAKE_INSTALL_PREFIX=$pathdir/massr/mass \
+	-DCMAKE_INSTALL_PREFIX=${pathdir}/massr/mass \
 	../${package}-${version}-source; \
 	make && make install;
 	# cp -r ./"${package}-${version}-build"/* ../inst/mass;
 	rm -rf ./"${package}-${version}-build";
-	rm -rf ./"${package}-${version}-source";
+	# rm -rf ./"${package}-${version}-source";
 	rm -rf ./basis-build;
 
 clean:
 	rm -rf ./"${package}-${version}-build"
-	rm -rf ./"${package}-${version}-source"
+	# rm -rf ./"${package}-${version}-source"
 	rm -rf ../inst/${package}/*;
 	rm -rf ./basis-build;
