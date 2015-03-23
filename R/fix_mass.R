@@ -27,16 +27,18 @@ fix_mass <- function(){
       return(TRUE)
     }
   }
-
-  if (grepl("inux", tolower(Sys.info()[['sysname']]))){
-    file = file.path(pkgdir, "lib/bash/mass/mass-functions.sh")
-    if (!file.exists(file)){
-      #       cat(paste0(file, " does not exist!\n"))
-    } else {
-      x = readLines(file)
-      xx = gsub("opt=t", "opt=p", x)
-      writeLines(xx, con = file)
+  file = file.path(pkgdir, "lib/bash/mass/mass-functions.sh")
+  sysname = tolower(Sys.info()[['sysname']])
+  if (!file.exists(file)){
+    #       cat(paste0(file, " does not exist!\n"))
+  } else {
+    x = readLines(file)
+    if (grepl("inux", sysname)){
+      x = gsub("opt=t", "opt=p", x, fixed=TRUE)      
+    } else if ( grepl("darwin", sysname) ){
+      x = gsub("-${opt} ${LocalTempDir}", "", x, fixed=TRUE)
     }
+    writeLines(x, con = file)      
   }
 
   all(sapply(files, changedir))
