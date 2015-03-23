@@ -50,6 +50,7 @@ all:
 	rm -rf ./basis-build;
 	cp ./${package}-${version}-source/Process_Files.R ./;
 	R CMD BATCH Process_Files.R
+	cat Process_Files.Rout
 
 clean:
 	rm -rf ./"${package}-${version}-build"
