@@ -1,7 +1,6 @@
 SHELL=bash
 version=1.1.0
 package=mass
-pathdir=`Rscript -e "cat(.libPaths()[1])"`;
 all:
 	mkdir -p ./basis-build;
 	cp basis-2.1.4-source.tar.gz ./basis-build;
@@ -33,14 +32,15 @@ all:
 	# sudo make && sudo make install;
 	#
 	# -DCMAKE_INSTALL_PREFIX=../../inst/mass \
-	#
+	pathdir := $(shell `Rscript -e "cat(.libPaths()[1])"`)
+	echo $(pathdir);
 	mkdir -p "${pathdir}/massr/mass";
 	prefix=$PWD/${package}-${version}-build;
 	echo $prefix;
 	mkdir -p ./"${package}-${version}-build";
 	cd ./"${package}-${version}-build"; \
 	cmake -D SCHEDULER:STRING=??? \
-	-DCMAKE_INSTALL_PREFIX="${pathdir}/massr/mass" \
+	-DCMAKE_INSTALL_PREFIX=$(pathdir)/massr/mass" \
 	../${package}-${version}-source; \
 	make && make install;
 	# cp -r ./"${package}-${version}-build"/* ../inst/mass;
