@@ -21,7 +21,7 @@ fix_mass <- function(){
 #       cat(paste0(file, " does not exist!\n"))
       return(FALSE)
     } else {
-      x = readLines(file)
+      suppressWarnings({x = readLines(file)})
       xx = gsub(install_dir, pkgdir, x)
       writeLines(xx, con = file)
       return(TRUE)
@@ -32,7 +32,7 @@ fix_mass <- function(){
   if (!file.exists(file)){
     #       cat(paste0(file, " does not exist!\n"))
   } else {
-    x = readLines(file)
+    suppressWarnings({x = readLines(file)})
     if (grepl("inux", sysname)){
       x = gsub("opt=t", "opt=p", x, fixed=TRUE)      
     } else if ( grepl("darwin", sysname) ){
