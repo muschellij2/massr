@@ -1,3 +1,4 @@
+SHELL=bash
 version=1.1.0
 package=mass
 all:
