@@ -17,7 +17,7 @@ fix_mass <- function(){
   ### change that to the mass dir
   changedir = function(file){
     if (!file.exists(file)){
-      cat(paste0(file, " does not exist!\n"))
+#       cat(paste0(file, " does not exist!\n"))
       return(FALSE)
     } else {
       x = readLines(file)
