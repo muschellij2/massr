@@ -11,7 +11,8 @@ fix_mass <- function(){
   pkgdir = file.path(system.file(package="massr"), "mass")
   files = file.path(pkgdir, files)
   ### Get directory of installing
-  root_temp = dirname(tempdir())
+#   root_temp = dirname(tempdir())
+  root_temp = "/"
   install_dir = paste0(root_temp, ".*/inst/mass")
   
   ### change that to the mass dir
