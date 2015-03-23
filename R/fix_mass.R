@@ -22,7 +22,7 @@ fix_mass <- function(){
       return(FALSE)
     } else {
       x = readLines(file)
-      xx = gsub(install_dir, pkgdir, xx)
+      xx = gsub(install_dir, pkgdir, x)
       writeLines(xx, con = file)
       return(TRUE)
     }
