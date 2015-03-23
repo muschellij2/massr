@@ -19,7 +19,7 @@ Type 'q()' to quit R.
 
 > files= file.path("lib/", c('mass-fillHoles', "mass-morpho", 
 +                              "mass-registrations", "mass-skullstripping"))
-> files = c(files, file.path("lib/", 
+> files = c(files, file.path("bin/", 
 +                            c('mass', "mass-chooseTemplates", 
 +                              "mass-thresholdJacobian", "uninstall-mass")))
 > ### Get directory of installing
@@ -28,12 +28,16 @@ Type 'q()' to quit R.
 > ### change that to the mass dir
 > pkgdir = file.path(.libPaths(), "mass")
 > changedir = function(file){
++   if (!file.exists(file)){
++     cat(paste0(file, " does not exist!\n"))
++   }
 +   x = readLines(file)
 +   xx = gsub(install_dir, pkgdir, xx)
 +   writeLines(xx, con = file)
 + }
 > 
 > sapply(files, changedir)
+../inst/mass/lib//mass-fillHoles does not exist!
 Error in file(con, "r") : cannot open the connection
 Calls: sapply -> lapply -> FUN -> readLines -> file
 In addition: Warning message:

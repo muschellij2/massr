@@ -35,8 +35,8 @@ all:
 	# pathdir := $(shell `Rscript -e "cat(.libPaths()[1])"`)
 	# echo $(pathdir);
 	# mkdir -p "${pathdir}/massr/mass";
-	prefix=$PWD/${package}-${version}-build;
-	echo $prefix;
+	# prefix=$PWD/${package}-${version}-build;
+	# echo $prefix;
 	mkdir -p ./"${package}-${version}-build";
 	# -DCMAKE_INSTALL_PREFIX=$(pathdir)/massr/mass" \
 	cd ./"${package}-${version}-build"; \
