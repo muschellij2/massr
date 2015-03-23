@@ -32,9 +32,9 @@ all:
 	# sudo make && sudo make install;
 	#
 	# -DCMAKE_INSTALL_PREFIX=../../inst/mass \
-	pathdir := $(shell `Rscript -e "cat(.libPaths()[1])"`)
-	echo $(pathdir);
-	mkdir -p "${pathdir}/massr/mass";
+	# pathdir := $(shell `Rscript -e "cat(.libPaths()[1])"`)
+	# echo $(pathdir);
+	# mkdir -p "${pathdir}/massr/mass";
 	prefix=$PWD/${package}-${version}-build;
 	echo $prefix;
 	mkdir -p ./"${package}-${version}-build";
